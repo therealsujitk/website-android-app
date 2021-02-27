@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="Download Hello World. An android application that displays 'Hello World!'.">
+        <title>Hello World - @therealsujitk</title>
+    </head>
+    <body>
+        <div id="container">
+            <table id="head">
+                <tr>
+                    <td><img id="logo" src="assets/images/logo.svg"></td>
+                    <td id="title">
+                        <h2>Hello World</h2>
+                        <a href="http://therealsuji.tk" target="_blank" style="margin: 0px 30px 10px 30px;">@therealsujitk</a>
+                        <br>
+                        <a href="download"><input class="btn" style="margin: 10px 30px 0px 30px;" type="button" value="Download"></input></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title-mobile">
+                        <h2>Hello World</h2>
+                        <a href="http://therealsuji.tk" target="_blank" style="margin: 0px 30px 10px 30px;">@therealsujitk</a>
+                        <br>
+                        <a href="download"><input class="btn" style="margin: 10px 30px 0px 30px;" type="button" value="Download"></input></a>
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+            <div id="screenshots">
+                <img class="preview" style="margin-left: 0;" src="assets/images/Preview_01.png">
+                <img class="preview" src="assets/images/Preview_02.png">
+                <img class="preview" src="assets/images/Preview_03.png">
+                <img class="preview" style="margin-right: 0;" src="assets/images/Preview_04.png">
+            </div>
+            <br>
+            <div id="stats">
+                <table style="width: calc(100% - 40px); text-align: center; color: #3ddb85;">
+                    <tr style="font-size: 200%;">
+                        <td><%= downloads %></td>
+                        <td><%= version %></td>
+                    </tr>
+                    <tr>
+                        <td>Downloads</td>
+                        <td>Version</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="details">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;">Last Updated</td>
+                        <td style="text-align: right;"><%= updated %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Download Size</td>
+                        <td style="text-align: right;"><%= size %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Requires Android</td>
+                        <td style="text-align: right;">Nougat 7.0+</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Content Rating</td>
+                        <td style="text-align: right;">Rated 3+</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Developer</td>
+                        <td style="text-align: right;">Sujit Kumar</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
