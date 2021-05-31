@@ -1,6 +1,6 @@
 # Hello World
 
-![Heroku](https://pyheroku-badge.herokuapp.com/?app=website-android-app) ![License](https://img.shields.io/badge/license-MIT-blue)
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=website-android-app) ![License](https://img.shields.io/badge/license-MIT-blue)
 
 This Node.js application is a download page for your android application.
 
@@ -35,32 +35,22 @@ This Node.js application is a download page for your android application.
     INSERT INTO android_hello_world (id, value) VALUES('version-name', 'v1.0.0');
     ```
 
-### Dependencies
-
-Install the necessary dependencies by running either of the commands below.
-
-Using **npm**:
-```sh
-$ npm install
-```
-
-Using **yarn**:
-```sh
-$ yarn
-```
-
 ### Usage
 
-**Note:** Before running either of the commands below to start the server, install the necessary dependencies by running either of the commands above.
+This application can be deployed to [Vercel](http://vercel.com) by clicking the button below.
 
-Using **npm**:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftherealsujitk%2Fwebsite-android-app)
+
+### Badge
+
+To display a badge containing the latest version name, use the following:
+
+![Release](https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=version-name&url=http://website-android-app.vercel.app/about.json)
+
 ```sh
-$ npm run start
+![Release](https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=version-name&url={DOWNLOAD_PAGE}/about.json)
 ```
 
-Using **yarn**:
-```sh
-$ yarn run start
-```
+Replace `{DOWNLOAD_PAGE}` with the url to your download page.
 
-**Note:** The route [`http://localhost/latest`](http://localhost/latest) can be used to check if the clients is using the latest version of the app.
+**Note:** The route [`http://localhost/about.json`](http://localhost/about.json) can be used to check if the client is using the latest version of the app.

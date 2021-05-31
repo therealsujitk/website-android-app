@@ -18,14 +18,23 @@ app.get('/', async (req, res) => {
     for (var i = 0; i < table.length; ++i) {
         if (table[i]['id'] == 'downloads') {
             downloads = table[i]['value'];
-        } else if (table[i]['id'] == 'size') {
-            size = table[i]['value'];
         } else if (table[i]['id'] == 'updated') {
             updated = table[i]['value'];
         } else if (table[i]['id'] == 'version-name') {
             versionName = table[i]['value'];
         }
     }
+
+    if (typeof versionName == undefined) {
+        res.status(500).send('Sorry, we could not connect to the database. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.');
+        return;
+    }
+
+    var file = __dirname + '/public/assets/apk/hello_world_' + versionName + '.apk';
+    var size = fs.statSync(file).size;      // Getting the size in Bytes
+    size /= 1000 * 1000;                    // Converting Bytes to Megabytes
+    size = Math.round(size * 10) / 10       // Rounding to the first decimal
+    size += " MB";                          // Adding an MB postfix
     
     var index = fs.readFileSync(__dirname + '/index.html').toString();
     index = index.replace('$downloads$', downloads);
@@ -58,13 +67,30 @@ app.get('/download', async(req, res) => {
 });
 
 /*
-    Page for the app to check for the latest version
+    Page to return a JSON object of the app data
  */
-app.get('/latest', async(req, res) => {
-    const table = await db.query(escape`SELECT value FROM android_hello_world WHERE id = 'version-code'`);
-    var versionCode = table[0]['value'];
+app.get('/about.json', async(req, res) => {
+    const table = await db.query(escape`SELECT * FROM android_hello_world`);
+    var versionName, versionCode, updated;
+    
+    for (var i = 0; i < table.length; ++i) {
+        if (table[i]['id'] == 'version-name') {
+            versionName = table[i]['value'];
+        } else if (table[i]['id'] == 'version-code') {
+            versionCode = table[i]['value'];
+        } else if (table[i]['id'] == 'updated') {
+            updated = table[i]['value'];
+        }
+    }
 
-    res.status(200).send('<span id="hello-world-vc">' + versionCode + '</span>');
+    var about = {
+        "name": "Hello World",
+        "version-name": versionName,
+        "version-code": parseInt(versionCode),
+        "last-updated": updated
+    };
+
+    res.status(200).json(about);
 });
 
 /*
