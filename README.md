@@ -29,7 +29,6 @@ This Node.js application is a download page for your android application.
 - Some pre-requisite data.
     ```sql
     INSERT INTO android_hello_world (id, value) VALUES('downloads', '0');
-    INSERT INTO android_hello_world (id, value) VALUES('size', '2.8 MB');
     INSERT INTO android_hello_world (id, value) VALUES('updated', '27 February 2021');
     INSERT INTO android_hello_world (id, value) VALUES('version-code', '1');
     INSERT INTO android_hello_world (id, value) VALUES('version-name', 'v1.0.0');
