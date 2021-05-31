@@ -5,16 +5,17 @@
     "main": "bin/server.js",
     "author": "Sujit Kumar",
     "license": "MIT",
+    "scripts": {
+        "start": "node bin/server.js"
+    },
     "dependencies": {
-        "dotenv": "^8.2.0",
-        "ejs": "^3.1.6",
         "express": "^4.17.1",
         "mime": "^2.5.2",
         "path": "^0.12.7",
         "serverless-mysql": "^1.5.4",
         "sql-template-strings": "^2.2.2"
     },
-    "scripts": {
-        "start": "node bin/server.js"
+    "devDependencies": {
+        "dotenv": "^10.0.0"
     }
 }

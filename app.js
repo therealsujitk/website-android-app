@@ -27,12 +27,13 @@ app.get('/', async (req, res) => {
         }
     }
     
-    res.status(200).render('index.ejs', {
-        downloads: downloads,
-        version: versionName,
-        updated: updated,
-        size: size
-    });
+    var index = fs.readFileSync(__dirname + '/index.html').toString();
+    index = index.replace('$downloads$', downloads);
+    index = index.replace('$size$', size);
+    index = index.replace('$updated$', updated);
+    index = index.replace('$version$', versionName);
+    
+    res.status(200).send(index);
 });
 
 /*
