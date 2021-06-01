@@ -19,7 +19,7 @@ This Node.js application is a download page for your android application.
     MYSQL_PASSWORD=
     MYSQL_DATABASE=my_apps
     ```
-- **1** SQL table to store some data related to your android application.
+- SQL table to store some data related to your android application.
     ```sql
     CREATE TABLE android_hello_world (
         id VARCHAR(30) PRIMARY KEY,
@@ -44,10 +44,10 @@ This application can be deployed to [Vercel](http://vercel.com) by clicking the 
 
 To display a badge containing the latest version name, use the following:
 
-![Release](https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=$['version-name']&url=http://website-android-app.vercel.app/about.json)
+![Release](https://img.shields.io/badge/dynamic/json?label=release&query=$['version-name']&url=http://website-android-app.vercel.app/about.json)
 
 ```markdown
-![Release](https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=$['version-name']&url={DOWNLOAD_PAGE}/about.json)
+![Release](https://img.shields.io/badge/dynamic/json?label=release&query=$['version-name']&url={DOWNLOAD_PAGE}/about.json)
 ```
 
 Replace `{DOWNLOAD_PAGE}` with the url to your download page.
