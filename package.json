@@ -12,8 +12,7 @@
         "express": "^4.17.1",
         "mime": "^2.5.2",
         "path": "^0.12.7",
-        "serverless-mysql": "^1.5.4",
-        "sql-template-strings": "^2.2.2"
+        "serverless-mysql": "^1.5.4"
     },
     "devDependencies": {
         "dotenv": "^10.0.0"

@@ -40,6 +40,10 @@ This application can be deployed to [Vercel](http://vercel.com) by clicking the 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftherealsujitk%2Fwebsite-android-app)
 
+### App Info
+
+The route [`http://localhost/about.json`](http://localhost/about.json) can be used to check if the client is using the latest version of the app.
+
 ### Badge
 
 To display a badge containing the latest version name, use the following:
@@ -51,5 +55,3 @@ To display a badge containing the latest version name, use the following:
 ```
 
 Replace `{DOWNLOAD_PAGE}` with the url to your download page.
-
-**Note:** The route [`http://localhost/about.json`](http://localhost/about.json) can be used to check if the client is using the latest version of the app.

@@ -7,5 +7,7 @@ module.exports = {
     MYSQL_USER: process.env.MYSQL_USER,
     MYSQL_PASSWORD: process.env.MYSQL_PASSWORD,
     MYSQL_DATABASE: process.env.MYSQL_DATABASE,
-    SESSION_SECRET: process.env.SESSION_SECRET
+    TABLE_NAME: process.env.TABLE_NAME,
+    APP_NAME: process.env.APP_NAME,
+    APP_STRING: process.env.APP_STRING
 };
