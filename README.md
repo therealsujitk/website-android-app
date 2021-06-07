@@ -46,16 +46,35 @@ This application can be deployed to [Vercel](http://vercel.com) by clicking the 
 
 ### App Info
 
-The route [`http://localhost/about.json`](http://localhost/about.json) can be used to check if the client is using the latest version of the app.
+The route `/about.json` will return an object containing the app details.
+
+```json
+{
+    "name": "Hello World",
+    "version-name": "v1.0.0",
+    "version-code": 1,
+    "last-updated": "27 February 2021"
+}
+```
 
 ### Badge
 
-To display a badge containing the latest version name, use the following:
+To display a badge containing the latest version name, use the route `/badge.svg`
 
-![Release](https://img.shields.io/badge/dynamic/json?label=release&query=$['version-name']&url=http://website-android-app.vercel.app/about.json)
+![Release](http://website-android-app.vercel.app/badge.svg)
 
-```markdown
-![Release](https://img.shields.io/badge/dynamic/json?label=release&query=$['version-name']&url={DOWNLOAD_PAGE}/about.json)
+#### HTML
+
+```html
+<img src="http://localhost/badge.svg" />
 ```
 
-Replace `{DOWNLOAD_PAGE}` with the url to your download page.
+#### Markdown
+
+```markdown
+![Release](http://localhost/badge.svg)
+```
+
+#### Parameters
+
+- **`?style=`** - The style of the badge. Available styles: **`flat`** (Default), **`flat-square`**, **`plastic`** & **`for-the-badge`**.

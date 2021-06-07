@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "express": "^4.17.1",
+        "got": "^11.8.2",
         "mime": "^2.5.2",
         "path": "^0.12.7",
         "serverless-mysql": "^1.5.4"

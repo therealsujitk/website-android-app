@@ -5,6 +5,7 @@ const path = require('path');
 const mime = require('mime');
 const fs = require('fs');
 const config = require(__dirname + '/config');
+const got = require('got');
 
 const APP_NAME = config["APP_NAME"] || "Hello World";
 const TABLE_NAME = config["TABLE_NAME"] || "android_hello_world";
@@ -89,6 +90,55 @@ app.get('/about.json', async (req, res) => {
     };
 
     res.status(200).json(about);
+});
+
+/*
+    Display a version badge for the application
+ */
+app.get('/badge.svg*', async (req, res) => {
+    if (!("version-name" in cache)) {
+        const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'version-name'");
+
+        if (table[0] == undefined) {
+            error(res); return;
+        }
+
+        cache["version-name"] = table[0]['value'];
+    }
+
+    let color = 'blue';
+    let style = 'flat';
+    let versionName = cache["version-name"].replace(/-/g, '--');
+
+    let preReleases = [
+        'unstable',
+        'alpha', 'a',
+        'beta', 'b',
+        'dev',
+        'rc'
+    ];
+
+    for (let i = 0; i < preReleases.length; ++i) {
+        if (versionName.toLowerCase().includes(preReleases[i])) {
+            color = 'orange';
+            break;
+        }
+    }
+
+    let query = req.query;
+
+    if ("style" in query) {
+        style = query["style"];
+    }
+
+    let url = 'http://img.shields.io/badge/release-' + cache["version-name"] + '-' + color + "?style=" + style;
+
+    try {
+		const response = await got(url);
+		res.status(200).send('<style>body { margin: 0; }</style>' + response.body);
+	} catch (error) {
+        res.status(500).send('Internal Server Error. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
+	}
 });
 
 /*
