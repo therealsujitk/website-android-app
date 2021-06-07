@@ -135,7 +135,8 @@ app.get('/badge.svg*', async (req, res) => {
 
     try {
 		const response = await got(url);
-		res.status(200).send('<style>body { margin: 0; }</style>' + response.body);
+        res.setHeader('Content-type', 'image/svg+xml');
+		res.status(200).send(response.body);
 	} catch (error) {
         res.status(500).send('Internal Server Error. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
 	}
