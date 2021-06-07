@@ -65,7 +65,7 @@ app.get('/download', async (req, res) => {
     filestream.pipe(res);
 
     // Incrementing the number of downloads
-    await db.query(escape`UPDATE android_hello_world SET value = value + 1 WHERE id = 'downloads'`);
+    await db.query("UPDATE " + TABLE_NAME + " SET value = value + 1 WHERE id = 'downloads'");
 });
 
 /*
