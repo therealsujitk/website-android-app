@@ -12,13 +12,17 @@ This Node.js application is a download page for your android application.
 
 - Node.js 10+
 - MySQL 5.2+
-- Environment Variables to connect to your database:
+- Environment Variables.
     ```sh
     MYSQL_HOST=localhost
     MYSQL_USER=root
     MYSQL_PASSWORD=
     MYSQL_DATABASE=my_apps
+    TABLE_NAME=android_hello_world
+    APP_STRING=hello_world_
+    APP_NAME=Hello World
     ```
+    **Note:** **`APP_STRING`** is the file name prefix. Ex: The **`APP_STRING`** for the file `hello_world_v1.0.0.apk` is `hello_world_`.
 - SQL table to store some data related to your android application.
     ```sql
     CREATE TABLE android_hello_world (
