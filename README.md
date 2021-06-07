@@ -61,18 +61,26 @@ The route `/about.json` will return an object containing the app details.
 
 To display a badge containing the latest version name, use the `/badge.svg` route.
 
-![Release](http://website-android-app.vercel.app/badge.svg)
+![Release](http://website-android-app.vercel.app/version.svg) ![Downloads](http://website-android-app.vercel.app/downloads.svg)
 
 #### HTML
 
 ```html
-<img src="http://website-android-app.vercel.app/badge.svg" />
+<img src="http://website-android-app.vercel.app/version.svg" />
+```
+
+```html
+<img src="http://website-android-app.vercel.app/downloads.svg" />
 ```
 
 #### Markdown
 
 ```markdown
-![Release](http://website-android-app.vercel.app/badge.svg)
+![Release](http://website-android-app.vercel.app/version.svg)
+```
+
+```markdown
+![Downloads](http://website-android-app.vercel.app/downloads.svg)
 ```
 
 #### Parameters

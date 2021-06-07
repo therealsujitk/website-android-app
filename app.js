@@ -95,7 +95,7 @@ app.get('/about.json', async (req, res) => {
 /*
     Display a version badge for the application
  */
-app.get('/badge.svg*', async (req, res) => {
+app.get('/version.svg*', async (req, res) => {
     if (!("version-name" in cache)) {
         const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'version-name'");
 
@@ -131,7 +131,45 @@ app.get('/badge.svg*', async (req, res) => {
         style = query["style"];
     }
 
-    let url = 'http://img.shields.io/badge/release-' + cache["version-name"] + '-' + color + "?style=" + style;
+    let url = 'http://img.shields.io/badge/release-' + versionName + '-' + color + "?style=" + style;
+
+    try {
+		const response = await got(url);
+        res.setHeader('Content-type', 'image/svg+xml');
+		res.status(200).send(response.body);
+	} catch (error) {
+        res.status(500).send('Internal Server Error. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
+	}
+});
+
+/*
+    Display a downloads badge for the application
+ */
+app.get('/downloads.svg*', async (req, res) => {
+    if (!("downloads" in cache)) {
+        const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'downloads'");
+
+        if (table[0] == undefined) {
+            error(res); return;
+        }
+
+        cache["downloads"] = table[0]['value'];
+    }
+
+    let color = 'brightgreen';
+    let style = 'flat';
+
+    if (cache["downloads"] < 1000) {
+        color = 'green';
+    }
+
+    let query = req.query;
+
+    if ("style" in query) {
+        style = query["style"];
+    }
+
+    let url = 'http://img.shields.io/badge/downloads-' + cache["downloads"] + '-' + color + "?style=" + style;
 
     try {
 		const response = await got(url);
