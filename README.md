@@ -66,13 +66,13 @@ To display a badge containing the latest version name, use the route `/badge.svg
 #### HTML
 
 ```html
-<img src="http://localhost/badge.svg" />
+<img src="http://website-android-app.vercel.app/badge.svg" />
 ```
 
 #### Markdown
 
 ```markdown
-![Release](http://localhost/badge.svg)
+![Release](http://website-android-app.vercel.app/badge.svg)
 ```
 
 #### Parameters
