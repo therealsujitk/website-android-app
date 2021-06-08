@@ -17,7 +17,7 @@ app.use('/', express.static(__dirname + '/public/'));
 
 /*
     The Home Page
- */
+*/
 app.get('/', async (req, res) => {
     if (!("downloads" in cache) && !await retrieve()) {
         error(res); return;
@@ -48,7 +48,7 @@ app.get('/', async (req, res) => {
 
 /*
     The page that sends the application to the client and updates the database
- */
+*/
 app.get('/download', async (req, res) => {
     if (!("version-name" in cache)) {
         const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'version-name'");
@@ -77,7 +77,7 @@ app.get('/download', async (req, res) => {
 
 /*
     Page to return a JSON object of the app data
- */
+*/
 app.get('/about.json', async (req, res) => {
     const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'version-code'");
 
@@ -101,7 +101,7 @@ app.get('/about.json', async (req, res) => {
 
 /*
     Display a release badge for the application
- */
+*/
 app.get('/release.svg*', async (req, res) => {
     if (!("version-name" in cache)) {
         const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'version-name'");
@@ -141,17 +141,17 @@ app.get('/release.svg*', async (req, res) => {
     let url = 'http://img.shields.io/badge/release-' + versionName + '-' + color + "?style=" + style;
 
     try {
-		const response = await got(url);
+        const response = await got(url);
         res.setHeader('Content-type', 'image/svg+xml');
-		res.status(200).send(response.body);
-	} catch (error) {
+        res.status(200).send(response.body);
+    } catch (error) {
         res.status(500).send('Internal Server Error. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
-	}
+    }
 });
 
 /*
     Display a downloads badge for the application
- */
+*/
 app.get('/downloads.svg*', async (req, res) => {
     if (!("downloads" in cache)) {
         const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'downloads'");
@@ -179,24 +179,24 @@ app.get('/downloads.svg*', async (req, res) => {
     let url = 'http://img.shields.io/badge/downloads-' + cache["downloads"] + '-' + color + "?style=" + style;
 
     try {
-		const response = await got(url);
+        const response = await got(url);
         res.setHeader('Content-type', 'image/svg+xml');
-		res.status(200).send(response.body);
-	} catch (error) {
+        res.status(200).send(response.body);
+    } catch (error) {
         res.status(500).send('Internal Server EInternal Server Errorrror. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
-	}
+    }
 });
 
 /*
     404 - Page not found
- */
+*/
 app.get('/*', (req, res) => {
     res.status(404).sendFile(__dirname + '/public/404.html');
 });
 
 /*
     Function to retrieve all data from the database
- */
+*/
 async function retrieve() {
     const table = await db.query("SELECT * FROM " + TABLE_NAME);
 
@@ -221,7 +221,7 @@ async function retrieve() {
 
 /*
     Function to respond with a database error
- */
+*/
 function error (res) {
     res.status(500).send('Sorry, we could not connect to the database. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.');
 }
