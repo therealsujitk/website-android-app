@@ -19,7 +19,7 @@ app.use('/', express.static(__dirname + '/public/'));
     The Home Page
  */
 app.get('/', async (req, res) => {
-    if (!("downloads" in cache) && !await retrieve()) {
+    if (!("version-code" in cache) && !await retrieve()) {
         error(res); return;
     }
 
@@ -27,8 +27,7 @@ app.get('/', async (req, res) => {
 
     if (!fs.existsSync(file)) {
         res.status(500).send('Sorry, the application was not found on the server. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.');
-        cache = {};
-        return;
+        cache = {}; return;
     }
 
     let size = fs.statSync(file).size;      // Getting the size in Bytes
