@@ -12,6 +12,10 @@ This Node.js application is a download page for your android application.
 
 - Node.js 10+
 - MySQL 5.2+
+- Application file names should be of the form
+  ```
+  {APP_STRING}{VERSION_NAME}.apk
+  ```
 - Environment variables
     ```sh
     MYSQL_HOST=localhost
@@ -37,8 +41,6 @@ This Node.js application is a download page for your android application.
     INSERT INTO android_hello_world (id, value) VALUES('version-code', '1');
     INSERT INTO android_hello_world (id, value) VALUES('version-name', 'v1.0.0');
     ```
-- File names should be of the form
-  <pre><b>{APP_STRING}{VERSION_NAME}</b>.apk</pre>
 
 ### Usage
 
@@ -63,7 +65,7 @@ The route `/about.json` will return an object containing the app details.
 
 Badges to display the latest release and the number of downloads.
 
-![Release](http://website-android-app.vercel.app/version.svg) ![Downloads](http://website-android-app.vercel.app/downloads.svg)
+![Release](http://website-android-app.vercel.app/release.svg) ![Downloads](http://website-android-app.vercel.app/downloads.svg)
 
 #### HTML
 
