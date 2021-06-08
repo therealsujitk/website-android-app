@@ -12,7 +12,7 @@ This Node.js application is a download page for your android application.
 
 - Node.js 10+
 - MySQL 5.2+
-- Environment Variables.
+- Environment variables
     ```sh
     MYSQL_HOST=localhost
     MYSQL_USER=root
@@ -22,21 +22,23 @@ This Node.js application is a download page for your android application.
     APP_STRING=hello_world_
     APP_NAME=Hello World
     ```
-    **Note:** **`APP_STRING`** is the file name prefix. Ex: The **`APP_STRING`** for the file `hello_world_v1.0.0.apk` is `hello_world_`.
-- SQL table to store some data related to your android application.
+    **Note:** The **`APP_STRING`** for the file `hello_world_v1.0.0.apk` is `hello_world_`.
+- SQL table to store data related to your android application
     ```sql
     CREATE TABLE android_hello_world (
         id VARCHAR(30) PRIMARY KEY,
         value VARCHAR(30) NOT NULL
     );
     ```
-- Some pre-requisite data.
+- Some pre-requisite data
     ```sql
     INSERT INTO android_hello_world (id, value) VALUES('downloads', '0');
     INSERT INTO android_hello_world (id, value) VALUES('updated', '27 February 2021');
     INSERT INTO android_hello_world (id, value) VALUES('version-code', '1');
     INSERT INTO android_hello_world (id, value) VALUES('version-name', 'v1.0.0');
     ```
+- File names should be of the form
+  <pre><b>{APP_STRING}{VERSION_NAME}</b>.apk</pre>
 
 ### Usage
 
