@@ -99,9 +99,9 @@ app.get('/about.json', async (req, res) => {
 });
 
 /*
-    Display a version badge for the application
+    Display a release badge for the application
  */
-app.get('/version.svg*', async (req, res) => {
+app.get('/release.svg*', async (req, res) => {
     if (!("version-name" in cache)) {
         const table = await db.query("SELECT value FROM " + TABLE_NAME + " WHERE id = 'version-name'");
 

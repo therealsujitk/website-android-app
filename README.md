@@ -66,7 +66,7 @@ Badges to display the latest release and the number of downloads.
 #### HTML
 
 ```html
-<img src="http://website-android-app.vercel.app/version.svg" alt="Release" />
+<img src="http://website-android-app.vercel.app/release.svg" alt="Release" />
 ```
 
 ```html
@@ -76,7 +76,7 @@ Badges to display the latest release and the number of downloads.
 #### Markdown
 
 ```markdown
-![Release](http://website-android-app.vercel.app/version.svg)
+![Release](http://website-android-app.vercel.app/release.svg)
 ```
 
 ```markdown
