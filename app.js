@@ -24,6 +24,12 @@ app.get('/', async (req, res) => {
     }
 
     let file = __dirname + '/public/assets/apk/' + APP_STRING + cache["version-name"] + '.apk';
+
+    if (!fs.existsSync(file)) {
+        res.status(500).send('Sorry, the application was not found on the server. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.');
+        return;
+    }
+
     let size = fs.statSync(file).size;      // Getting the size in Bytes
     size /= 1000 * 1000;                    // Converting Bytes to Megabytes
     size = Math.round(size * 10) / 10       // Rounding to the first decimal
@@ -176,7 +182,7 @@ app.get('/downloads.svg*', async (req, res) => {
         res.setHeader('Content-type', 'image/svg+xml');
 		res.status(200).send(response.body);
 	} catch (error) {
-        res.status(500).send('Internal Server Error. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
+        res.status(500).send('Internal Server EInternal Server Errorrror. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.<br>');
 	}
 });
 
