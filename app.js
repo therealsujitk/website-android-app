@@ -27,6 +27,7 @@ app.get('/', async (req, res) => {
 
     if (!fs.existsSync(file)) {
         res.status(500).send('Sorry, the application was not found on the server. Please contact <a href="http://therealsuji.tk">@therealsujitk</a> if this issue persists.');
+        cache = {};
         return;
     }
 
